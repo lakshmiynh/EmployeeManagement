@@ -13,11 +13,9 @@ namespace CompanyManagement
 
         public const int Attendance_fulltime = 2;
         public const int Attendance_parttime = 1;
-        public const int onehvrwage = 20;
-        public const int onemonth_workingdays = 20; // working days for one month
-        public const int onemonth_workinghvrs = 100;
+        
          
-        public void CalculateEmployeewage()
+        public int CalculateEmployeewage(string company,int employeewageperhvr,int workingdays,int maxhvrspermonth)
         {
 
             int employeeworkinghvrs = 0;
@@ -29,7 +27,7 @@ namespace CompanyManagement
 
 
 
-            while (employeetotalworkingdays <= onemonth_workingdays && employeetotalworkinghvrs <= onemonth_workinghvrs)
+            while (employeetotalworkingdays <= workingdays && employeetotalworkinghvrs <= maxhvrspermonth)
             {
                 Random random = new Random();
 
@@ -56,21 +54,21 @@ namespace CompanyManagement
                 }
                 employeetotalworkinghvrs = employeetotalworkinghvrs + employeeworkinghvrs;
 
-
+                Console.WriteLine("days:" + employeetotalworkingdays + "hrs:" + employeeworkinghvrs);
 
 
             }
 
-            employeetotalwage = employeetotalworkinghvrs * onehvrwage;
+            employeetotalwage = employeetotalworkinghvrs * employeewageperhvr;
 
-            Console.WriteLine("Employee one month wage=" + employeetotalwage);
-
+            Console.WriteLine("Employee total  wage=" +company+"is="+ employeetotalwage);
+            return employeetotalwage;
         }
         static void Main(String[] args)
         {
             EmployeeManagement obj=new EmployeeManagement();
-            obj.CalculateEmployeewage();
-
+            obj.CalculateEmployeewage("vishalmart",30,2,10);
+            obj.CalculateEmployeewage("KMF", 40, 2, 20);
 
 
         }
