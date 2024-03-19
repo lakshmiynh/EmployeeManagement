@@ -6,39 +6,54 @@ using System.Threading.Tasks;
 
 namespace CompanyManagement
 {
+
+   
     class EmployeeManagement
     {
+
+        public const int Attendance_fulltime = 2;
+        public const int Attendance_parttime = 1;
+        public const int onehvrwage = 20;
+        public const int onemonth_workingdays = 20; // working days for one month 
+
         static void Main(String[] args)
         {
 
-            int Attendance_fulltime = 2;
-            int Attendance_parttime = 1;
-
-            int onehvrwage = 20;
 
             int employeeworkinghvrs = 0;
             int employeeonedaywage = 0;
+            int employeetotalwage = 0;
 
             Random random = new Random();
 
             // check present or absent
             int checkAttendance = random.Next(0, 3);
 
-            switch(checkAttendance)
+            for (int day = 0; day <= onemonth_workingdays; day++)
             {
-                case 1: employeeworkinghvrs = 4; // parttime 
-                    break;
 
-                case 2:employeeworkinghvrs = 8; // fulltime
-                    break;
+                switch (checkAttendance)
+                {
+                    case 1:
+                        employeeworkinghvrs = 4; // parttime 
 
-                default:employeeworkinghvrs= 0;
-                    break;
+                        break;
 
+                    case 2:
+                        employeeworkinghvrs = 8; // fulltime
+                        break;
+
+                    default:
+                        employeeworkinghvrs = 0;
+                        break;
+
+                }
+
+                employeeonedaywage = employeeworkinghvrs * onehvrwage;
+                employeetotalwage = employeetotalwage + employeeonedaywage;
             }
-
-            employeeonedaywage=employeeworkinghvrs*onehvrwage;
-            Console.WriteLine("Employee wage="+employeeonedaywage);
+            
+            Console.WriteLine("Employee one month wage="+employeetotalwage);
 
         }
     }
