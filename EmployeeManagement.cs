@@ -22,21 +22,19 @@ namespace CompanyManagement
             Random random = new Random();
 
             // check present or absent
-            int checkAttendance = random.Next(0, 2);
+            int checkAttendance = random.Next(0, 3);
 
-            if (checkAttendance == Attendance_fulltime)
+            switch(checkAttendance)
             {
-                Console.WriteLine("Employee is present");
-                employeeworkinghvrs = 8;
-            }
-            else if(checkAttendance == Attendance_parttime)
-            {
-                employeeworkinghvrs = 4;
-            }
-            else
-            {
-                Console.WriteLine("Employee is absent");
-                employeeworkinghvrs = 0;
+                case 1: employeeworkinghvrs = 4; // parttime 
+                    break;
+
+                case 2:employeeworkinghvrs = 8; // fulltime
+                    break;
+
+                default:employeeworkinghvrs= 0;
+                    break;
+
             }
 
             employeeonedaywage=employeeworkinghvrs*onehvrwage;
