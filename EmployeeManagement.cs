@@ -14,7 +14,8 @@ namespace CompanyManagement
         public const int Attendance_fulltime = 2;
         public const int Attendance_parttime = 1;
         public const int onehvrwage = 20;
-        public const int onemonth_workingdays = 20; // working days for one month 
+        public const int onemonth_workingdays = 20; // working days for one month
+        public const int onemonth_workinghvrs = 100;
 
         static void Main(String[] args)
         {
@@ -23,36 +24,46 @@ namespace CompanyManagement
             int employeeworkinghvrs = 0;
             int employeeonedaywage = 0;
             int employeetotalwage = 0;
+            int employeetotalworkingdays = 0;
+            int employeetotalworkinghvrs = 0;
 
-            Random random = new Random();
 
-            // check present or absent
-            int checkAttendance = random.Next(0, 3);
-
-            for (int day = 0; day <= onemonth_workingdays; day++)
-            {
-
-                switch (checkAttendance)
-                {
-                    case 1:
-                        employeeworkinghvrs = 4; // parttime 
-
-                        break;
-
-                    case 2:
-                        employeeworkinghvrs = 8; // fulltime
-                        break;
-
-                    default:
-                        employeeworkinghvrs = 0;
-                        break;
-
-                }
-
-                employeeonedaywage = employeeworkinghvrs * onehvrwage;
-                employeetotalwage = employeetotalwage + employeeonedaywage;
-            }
             
+
+            while (employeetotalworkingdays <= onemonth_workingdays&& employeetotalworkinghvrs<= onemonth_workinghvrs)
+            {
+                Random random = new Random();
+
+                // check present or absent
+                int checkAttendance = random.Next(0, 3);
+
+                employeetotalworkingdays++;
+
+                    switch (checkAttendance)
+                    {
+                        case 1:
+                            employeeworkinghvrs = 4; // parttime 
+
+                            break;
+
+                        case 2:
+                            employeeworkinghvrs = 8; // fulltime
+                            break;
+
+                        default:
+                            employeeworkinghvrs = 0;
+                            break;
+
+                    }
+                          employeetotalworkinghvrs = employeetotalworkinghvrs + employeeworkinghvrs;
+
+                   
+                                   
+
+            }
+
+            employeetotalwage = employeetotalworkinghvrs * onehvrwage;
+
             Console.WriteLine("Employee one month wage="+employeetotalwage);
 
         }
