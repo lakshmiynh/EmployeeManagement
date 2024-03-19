@@ -16,10 +16,9 @@ namespace CompanyManagement
         public const int onehvrwage = 20;
         public const int onemonth_workingdays = 20; // working days for one month
         public const int onemonth_workinghvrs = 100;
-
-        static void Main(String[] args)
+         
+        public void CalculateEmployeewage()
         {
-
 
             int employeeworkinghvrs = 0;
             int employeeonedaywage = 0;
@@ -28,9 +27,9 @@ namespace CompanyManagement
             int employeetotalworkinghvrs = 0;
 
 
-            
 
-            while (employeetotalworkingdays <= onemonth_workingdays&& employeetotalworkinghvrs<= onemonth_workinghvrs)
+
+            while (employeetotalworkingdays <= onemonth_workingdays && employeetotalworkinghvrs <= onemonth_workinghvrs)
             {
                 Random random = new Random();
 
@@ -39,32 +38,40 @@ namespace CompanyManagement
 
                 employeetotalworkingdays++;
 
-                    switch (checkAttendance)
-                    {
-                        case 1:
-                            employeeworkinghvrs = 4; // parttime 
+                switch (checkAttendance)
+                {
+                    case 1:
+                        employeeworkinghvrs = 4; // parttime 
 
-                            break;
+                        break;
 
-                        case 2:
-                            employeeworkinghvrs = 8; // fulltime
-                            break;
+                    case 2:
+                        employeeworkinghvrs = 8; // fulltime
+                        break;
 
-                        default:
-                            employeeworkinghvrs = 0;
-                            break;
+                    default:
+                        employeeworkinghvrs = 0;
+                        break;
 
-                    }
-                          employeetotalworkinghvrs = employeetotalworkinghvrs + employeeworkinghvrs;
+                }
+                employeetotalworkinghvrs = employeetotalworkinghvrs + employeeworkinghvrs;
 
-                   
-                                   
+
+
 
             }
 
             employeetotalwage = employeetotalworkinghvrs * onehvrwage;
 
-            Console.WriteLine("Employee one month wage="+employeetotalwage);
+            Console.WriteLine("Employee one month wage=" + employeetotalwage);
+
+        }
+        static void Main(String[] args)
+        {
+            EmployeeManagement obj=new EmployeeManagement();
+            obj.CalculateEmployeewage();
+
+
 
         }
     }
