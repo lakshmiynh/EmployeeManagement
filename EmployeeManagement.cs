@@ -11,9 +11,11 @@ namespace CompanyManagement
         static void Main(String[] args)
         {
 
-            int Attendance = 1;
+            int Attendance_fulltime = 2;
+            int Attendance_parttime = 1;
 
             int onehvrwage = 20;
+
             int employeeworkinghvrs = 0;
             int employeeonedaywage = 0;
 
@@ -22,10 +24,14 @@ namespace CompanyManagement
             // check present or absent
             int checkAttendance = random.Next(0, 2);
 
-            if (checkAttendance == Attendance)
+            if (checkAttendance == Attendance_fulltime)
             {
                 Console.WriteLine("Employee is present");
                 employeeworkinghvrs = 8;
+            }
+            else if(checkAttendance == Attendance_parttime)
+            {
+                employeeworkinghvrs = 4;
             }
             else
             {
